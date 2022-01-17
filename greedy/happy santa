@@ -178,6 +178,55 @@ int main(){
 //1 1 0 1 0 0 1 1 0 1 1
 
 
+int solve() 
+{
+    
+    //Test
+
+    int n,k;
+    cin>>n>>k;
+
+    vector<int>a(n);cin>>a;
+    vector<int>l(n);
+    vector<int>r(n);
+
+    l = r = a;
+
+    for(int i=k;i<n;i++){
+        if(a[i] == 0){
+            if(a[i-k])l[i] = l[i-k];
+            else l[i] = 0;
+        }else{
+            if(a[i-k])l[i] = l[i-k]+1;
+            else l[i] = 1;
+        }
+    }
+
+    for(int i=n-k-1;i>=0;i--){
+        if(a[i] == 0){
+            if(a[i+k])r[i] = r[i+k];
+            else r[i] = 0;
+        }else{
+            if(a[i+k])r[i] = r[i+k]+1;
+            else r[i] = 1;
+        }
+    }
+
+    vector<int>ans(n,0);
+
+    for(int i=0;i<n;i++){
+        if(a[i] == 0){
+            ans[i] = l[i]+r[i];
+        }
+    }
+    
+    cout<<ans<<endl;
+
+    return 0;
+    //error();
+}
+
+
 
 /*
 I know who....
