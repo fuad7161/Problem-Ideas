@@ -1,0 +1,16 @@
+vector<long long> findTwoElement(vector<long long>ar, int n1) {
+    long long n = n1;
+    long long s = (n*(n+1))/2LL;
+    long long ss = (n*(n+1)*((2*n)+1))/6LL;
+    for(int i=0;i<n;i++){
+        long long a = (ar[i]);
+        s -= a;
+        ss -= (a*a);
+    }
+    long long x = ((ss/s)+s) / 2;
+    long long y = (x-s);
+    vector<long long> ans(2);
+    ans[0] = y;
+    ans[1] = x;
+    return ans;
+}
