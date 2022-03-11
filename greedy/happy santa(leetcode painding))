@@ -1,0 +1,145 @@
+happy santa
+There is an array in the Santa's world and an inter k.
+Every index have one Santa. there are only have zero or one in the index.
+Zero mean Santa have no gift and one mean Santa have infinite gifts.
+if array[i] = 0 then Santa will collect gift from those index which have infinite gifts.
+But Santa is allowed to go from i to i+k, i+2k, i+3k ... 
+and from i to i-k, i-2k, i-3k ... 
+When Santa go to an index but its don't have infinite gifts. Then Santa will go back to his index.
+Now Santa is weak to calculate the number of index from where Santa will collect the gifts. So now you have to calculate the number of index from where Santa will collect the gifts of the i'th Santas.
+
+Example:
+
+nums   = [1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1], k = 2
+
+output =  [0, 0, 1, 0, 1, 4, 0, 0, 2, 0, 0]
+
+Note: assume that array is one indexing
+
+if we take i = 5
+array[5] = 0, that means there is no gift right now. so santa will go some index and collect gifts. 
+now santa is allow to go from 5 to 7 , 9 ,  11 .. and so on..
+and also he is allow to go from 5 to 3 , 1 , -1 , ....
+array[7] = 1 so Santa will collect gift from there.
+array[9] = 0 there is no gift at the index 9 so Santa will return back.
+agaig,
+array[3] = 0 there is no gift at the index 3 so santa will return back.
+so for index 5 Santa will collect gift from only one index.
+
+if we take i = 6
+array[6] = 0, that means there is no gift right now. so santa will go some index and collect gifts. 
+now santa is allow to go from 6 to 8 , 10 , 12 .. and so on..
+and also he is allow to go from 6 to 4 , 2 , 0 , ....
+
+array[8] = 1 so sonta will collect gift from there.
+
+array[10] = 1 so sonta will collect gift from there.
+array[12] index 12 is out of bound so. santa will be return back.
+again,
+array[4] = 1 so sonta will collect gift from there.
+array[2] = 1 so sonta will collect gift from there.
+array[0] index 0 is not valid index. so santa will be return back.
+so for index 6 there is 4 index avalable from  where santa will collect gift.
+
+Node: array index must be valid.
+
+
+solution..
+firstly we have to prefix for all valid k in O(n) time 
+then we have to suffix for all valid k in O(n) then we have to check for all index and store the answer. 
+very simple problem to understand and solution is also simple.
+1st solution 
+vector<int> happy_santa(vector<int> nums, int k){
+    int n = nums.size();
+    vector<int>l(n);
+    vector<int>r(n);
+
+    for(int z = 0;z<k;z++){
+        int i = z;
+        int cc = 0;
+        while(i<n){
+            if(nums[i] == 0){
+                l[i] = cc;
+                cc = 0;
+            }else{
+                cc += 1;
+            }
+            i += k;
+        }
+        cc = 0;
+        i -= k;
+        while(i >= 0){
+            if(nums[i] == 0){
+                r[i] = cc;
+                cc = 0;
+            }else{
+                cc += 1;
+            }
+            i -= k;
+        }
+    }
+
+    vector<int>ans(n);
+    for(int i=0;i<n;i++){
+        ans[i] = l[i]+r[i];
+    }
+
+    return ans;
+}
+
+2nd solution..
+
+vector<int> happy_santa(vector<int>nums , int k){
+	int n = nums.size();
+	vector<int>l(n);
+    vector<int>r(n);
+
+    l = r = nums;
+
+    for(int i=k;i<n;i++){
+        if(nums[i] == 0){
+            if(nums[i-k])l[i] = l[i-k];
+            else l[i] = 0;
+        }else{
+            if(nums[i-k])l[i] = l[i-k]+1;
+            else l[i] = 1;
+        }
+    }
+
+    for(int i=n-k-1;i>=0;i--){
+        if(nums[i] == 0){
+            if(nums[i+k])r[i] = r[i+k];
+            else r[i] = 0;
+        }else{
+            if(nums[i+k])r[i] = r[i+k]+1;
+            else r[i] = 1;
+        }
+    }
+
+    vector<int>ans(n,0);
+
+    for(int i=0;i<n;i++){
+        if(nums[i] == 0){
+            ans[i] = l[i]+r[i];
+        }
+    }
+    
+    return ans;
+}
+
+input: nums = [1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1], k = 2
+Output: [0, 0, 1, 0, 1, 4, 0, 0, 2, 0, 0]
+
+input: nums = [1,0,1,0,0,0,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,0,1,0,1,1,0,1,1,1,1,0,1,0,1,1,0,0,0,0,1,0,1,1,0,1,1,0,1,1,1,1,1,0,0,0,1,1,1,0,1,0,1,1,0,0,0,1,1,0,0,1,0,0,1,0,0,0,1,1,1,1,0,1,0,0,1,1,0,1,1,1,0,1,1,0,0,0,1,1] k = 7
+output: [0,0,0,0,0,1,0,2,0,0,2,0,0,0,0,2,2,0,2,1,2,7,0,1,0,0,0,0,0,0,0,2,0,1,0,0,5,1,2,3,0,3,0,0,2,0,0,1,0,0,0,0,0,5,0,2,0,0,0,2,0,1,0,0,5,2,0,0,0,1,6,0,3,3,0,1,2,0,0,0,0,0,1,0,2,2,0,0,4,0,0,0,1,0,0,0,1,2,0,0]
+
+
+input: nums = [1,0,1,0,0,0,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,0,1,0,1,1,0,1,1,1,1,0,1,0,1,1,0,0,0,0,1,0,1,1,0,1,1,0,1,1,1,1,1,0,0,0,1,1,1,0,1,0,1,1,0,0,0,1,1,0,0,1,0,0,1,0,0,0,1,1,1,1,0,1,0,0,1,1,0,1,1,1,0,1,1,0,0,0,1,1] k = 50
+output: [0,1,0,0,0,0,1,1,1,0,1,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,1,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,0,0,1,0,1,1,0,0,0,0,0,0,1,0,0,1,1,0,0,0]
+
+input: nums = [1,0,1,0,0,0,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,0,1,0,1,1,0,1,1,1,1,0,1,0,1,1,0,0,0,0,1,0,1,1,0,1,1,0,1,1,1,1,1,0,0,0,1,1,1,0,1,0,1,1,0,0,0,1,1,0,0,1,0,0,1,0,0,0,1,1,1,1,0,1,0,0,1,1,0,1,1,1,0,1,1,0,0,0,1,1],k = 1
+output: [0,2,0,1,0,0,0,0,1,0,1,1,0,2,0,1,1,0,1,0,0,1,0,3,0,0,6,0,0,0,0,5,0,3,0,0,2,0,0,1,0,3,0,0,4,0,0,7,0,0,0,0,0,5,0,3,0,0,0,4,0,3,0,0,2,0,2,0,0,2,1,0,1,1,0,1,0,4,0,0,0,0,5,0,1,2,0,0,5,0,0,0,5,0,0,2,0,2,0,0]
+
+
+
+
