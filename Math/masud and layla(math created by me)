@@ -1,0 +1,50 @@
+masud and laila are good friend. At the age of 20, masud went abroad to study.
+That's why Laila is very disappointed. So she decided to meet with Masud as soon as possible. 
+But Laila does not know where is Masud. So she went out to find Masud.
+
+Laila will start looking for Masud from the 1th index. layla know the value of n and k. Laile will go to (1+ik)th index 
+(where i = 0,1,2,3... 10^18) for find masud and buy gift.
+from (1+ik)th index she will collect gift. the price of gift is (1+ik)%n; ('%' means MOD).
+she will buy different prices gift.(NB: Don't buy gifts of the same price more than once)
+Laila is weak in math. So Fuad and Imran will help her to calculate the total cost of the gift.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+ll get_sum(ll n,ll d){
+    return (n*(2+(n-1)*d))/2LL;
+}
+
+ll make(ll f, ll d){
+    return ((f-1)/d)+1LL;
+}
+
+int solve(){
+
+	ll n,k;
+    cin>>n>>k;
+    if(__gcd(n,k) != 1){
+        k = __gcd(n,k);
+        int z = make(n,k);
+        cout<<get_sum(z,k)<<endl;
+    }else{
+        cout<<(n*(n-1))/2<<endl;
+    }
+    return 0;
+}
+
+
+int main(){
+	cin.tie(0);ios::sync_with_stdio(false);
+
+	int t;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+
+	return 0;
+}
