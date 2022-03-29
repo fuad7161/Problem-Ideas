@@ -1,0 +1,55 @@
+code: LL
+#define ll long long
+
+code: constants
+const int Inf  = (int)2e9 + 5;
+const ll  Lnf  = (ll)2e18 + 5;
+const int maxN  = 1e6 + 5;
+const int N  = 5e5 + 5;
+
+code: power
+long long Pow(long long a,long long n){
+    long long res = 1;
+    while(n){
+        if(n&1) res = ((res)*(a));
+        a = ((a)*(a));
+        n>>=1LL;
+    }
+    return res;
+}
+
+code: inv_pow
+long long Inv_pow(long long a,long long n, long long M){
+    long long res = 1;
+    while(n){if(n&1) res = ((res%M)*(a%M))%M;
+        a = ((a%M)*(a%M))%M;
+        n>>=1LL;
+    }
+    return res%M;
+}
+
+code: all_mod
+inline int add(int a, int b, int mod) {
+    a += b ; 
+    return a >= mod ? a - mod : a ;
+}
+inline int sub(int a, int b, int mod) {
+    a -= b ; 
+    return a < 0 ? a + mod : a ;
+}
+inline int mul(int a, int b, int mod) {
+    return (long long)a * b % mod ;
+}
+
+code: vout
+#define vout(v) for (auto z: v) cout << z << " "; cout << endl;
+
+code: Unique
+#define Unique(c) (c).resize(unique(all(c))-(c).begin())
+
+code: all
+#define   all(n) n.begin(),n.end()
+
+code dxdy
+int dx[8]= {1,0,-1,0,-1,-1,1,1};
+int dy[8]= {0,1,0,-1,-1,1,-1,1}; 
