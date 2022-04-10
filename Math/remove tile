@@ -4,7 +4,7 @@ there is any index with value atleast 1). what is the minimum time required to r
 #include<bits/stdc++.h>
 using namespace std;
 
-#define ll long long
+#define ll long long 
 const int Inf = 1e9;
 
 int main(){
@@ -73,4 +73,17 @@ test 5:
 3
 4 2 1
 >> 2
+test 6:
+5
+4 4 4 4 5
+4
 
+test 7:
+5
+1 2 3 5 9
+5
+
+test 8:
+5
+1 1 1 1 9
+5
