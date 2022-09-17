@@ -1,0 +1,9 @@
+suppos you are at the position x,y
+there is your n ex house in (x1,y1) , (x2,y2) , (x3,y3) ... (xn,yn)
+you have to caltulate the summation of summation_of_all_1_to_n_{((x-xi)^2 + (y-yi)^2)}
+formula is: we will calculate distence x and y separately.
+for x:
+formula: (n*(x^2)) - 2*x*(sum_of_1_to_n(xi)) + (squre_sum_of_1_to_n(xi))
+sum_of_1_to_n is for(int i=0;i<n;i++)sumx += x[i];
+sqre_sum_of_1_to_n is for(int i=0;i<n;i++)sumx += (x[i]*x[i]);
+same for y
