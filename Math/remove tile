@@ -1,5 +1,5 @@
-in the array you can remove atmost 2 tile from one index (if there is any index with value atleast 2). and from others index you can remove  atmost 1 tile(if 
-there is any index with value atleast 1). what is the minimum time required to remove all the tiles.
+alice and bob akta array vag kore nebe. then alice je value gula nese. segula theke every value theke 2 minus korbe. ar bob 1 minus korbe. 
+minimum operation koto hobe?
 
 #include<bits/stdc++.h>
 using namespace std;
