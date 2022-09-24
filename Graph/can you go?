@@ -1,0 +1,44 @@
+you have a tree. and you have vaule of all node.  you are allow to go from node u to node v .
+only if the path from node u to node v, all node are content same value. 
+there are two type of query
+1. check if you can go from node u to node v.
+2. change the node value.
+
+12
+1 2 3 1 2 2 2 1 1 3 2 2
+1 2
+1 3
+1 8
+2 4
+2 5
+3 7
+3 6
+8 10
+8 9
+7 11
+7 12
+
+node 4 to node 9 
+the path is : 4 -> 2 -> 1 -> 8 -> 9
+the value is: 1 -> 1 -> 1 -> 1 -> 1
+all the path value is same so. you are allow to go. 
+node 6 to node 11
+the path is : 6 -> 3 -> 7 -> 11
+the value is: 2 -> 2 -> 2 -> 2
+all the path value is same. so you are allow to go.
+
+node 11 to 8
+the path is : 11 -> 7 -> 3 -> 1 -> 8
+the value is: 2  -> 2 -> 2 -> 1 -> 1
+here path value is not unique so you are note allow to go this path.
+
+ update the node 1 into 2
+ update the node 8 into 2
+
+node 11 to 8
+the path is : 11 -> 7 -> 3 -> 1 -> 8
+the value is: 2  -> 2 -> 2 -> 2 -> 2
+all the path value is same. so you are allow to go.
+
+after update the node 1 and 8 now you are allow to move from node 11 to node 8
+
