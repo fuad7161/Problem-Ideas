@@ -4,7 +4,56 @@ there are two type of query
 1. check if you can go from node u to node v.
 2. change the node value.
 
-12 8
+/*
+
+Adnan loves to travel. So , he has already visited all the countries in the world.  Now he wants to visit all the planets in the universe. There is only one way from one planet to another planet. Aliens from each planet exhibit a specific behaviour. You can move from one planet to another if the aliens on the 2 planets behave the same. Otherwise you can't go..
+
+Now Adnan wants your help. Tell him, if Adnan wants to move from Planet U to Planet V . Whether can he go or not?
+
+There are two types of operation in this problem.
+Find out if Adnan can go from planet U to planet V.
+Change the behavioural value of the planet X into V. 
+
+
+5
+1 1 2 2 1
+1 2
+1 4
+1 3
+2 5
+4
+1 1 5
+Yes
+1 3 4
+No
+2 1 2
+1 3 4
+Yes
+
+in this example.
+There are 5 planets. 
+their behavioural value is given and paht are given. 
+Now you have to operate 4 queries. 
+Query 1: find out, is there a valid path from planet 1 to planet 5.
+The path is : 1 -> 2 -> 5
+Paht value  :1 -> 1 -> 1 
+All the path values are the same. So Adnan can go from planet 1 to planet 5.
+
+Query 2: find out, is there a valid path from planet 3 to planet 4.
+The path is : 3 -> 1 -> 4
+Paht value  :2 -> 1 -> 2 
+All the path values are not the same. So Adnan can’t go from planet 3 to planet 4.
+
+Query3: just update the planet 1’s value into 2.
+
+Query 4: find out, is there a valid path from planet 3 to planet 4.
+The path is : 3 -> 1 -> 4
+Paht value  :2 -> 2 -> 2 
+All the path values are the same. So Adnan can go from planet 3 to planet 4.
+
+*/
+
+12
 1 1 2 1 2 2 2 1 1 3 2 2
 1 2
 1 3
@@ -17,7 +66,7 @@ there are two type of query
 8 9
 7 11
 7 12
-
+8
 1 4 9
 1 11 6
 2 9 2
@@ -142,8 +191,7 @@ void dfs(int x, int p = -1, int d = 0){
 }
 signed solve(){
     
-    int q;
-    cin>>n>>q;
+    cin>>n;
     for(int i=1;i<=n;i++){
         cin>>a[i];
     }
@@ -167,7 +215,8 @@ signed solve(){
         bt[a[i]].upd(st[i] , 1);
         bt[a[i]].upd(ft[i] , -1);
     }
-
+    int q;
+    cin>>q;
     while(q--){
         int k;
         cin>>k;
@@ -207,6 +256,4 @@ signed main(){
     // cin>>test;
     while (test--)solve();
     return 0;
-} 
-
-
+}
