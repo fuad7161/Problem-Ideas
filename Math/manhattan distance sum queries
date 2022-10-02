@@ -1,0 +1,69 @@
+you are given some points and also have a position in a 2d grid. 
+now you have to calculate the sum of all manhattan distance from this given position in each query.
+
+example: 
+
+5
+2 3
+2 6
+5 1
+5 5
+6 8
+5
+4 4
+total distance : 19
+1 1
+total distance : 33
+2 3
+total distance : 22
+5 6
+total distance : 18
+3 4
+total distance : 20
+
+
+brutforces is simple:
+#include <bits/stdc++.h>
+using namespace std;
+
+//debug..........
+#define error(args...) {vector<string>_v=split(#args,',');err(_v.begin(),args);cout<<endl;}
+vector<string> split(const string &s, char c) {vector<string>v; stringstream ss(s); string x;while (getline(ss, x, c))v.emplace_back(x); return move(v);} void err(vector<string>::iterator it) {}
+template<typename T, typename... Args>void err(vector<string>::iterator it, T a, Args...args) {cout << it->substr((*it)[0] == ' ', it->length()) << " = " << a << " "; err(++it, args...);}
+#define int long long
+
+signed solve(){
+
+    int n;
+    cin>>n;
+
+    vector<pair<int,int>>v;
+
+    int x,y;
+    for(int i=0;i<n;i++){
+        cin>>x>>y;
+        v.push_back({x,y});
+    }
+
+    int q;
+    cin>>q;
+
+    while(q--){
+        cin>>x>>y;
+        int sum = 0;
+        for(auto [xi,yi]:v){
+            sum += abs(x-xi)+abs(y-yi);
+        }
+        cout<<sum<<endl;
+    }
+
+
+    return 0;
+}
+signed main(){
+    ios::sync_with_stdio(false);cin.tie(0);int test = 1;
+    // cin>>test;
+    while (test--)solve();return 0;
+}
+
+
