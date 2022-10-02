@@ -138,3 +138,8 @@ signed main(){
     // cin>>test;
     while (test--)solve();return 0;
 }
+
+input generator : https://p.ip.fi/fjHl   
+
+
+
