@@ -1,5 +1,6 @@
-you are given some points and also have a position in a 2d grid. 
-now you have to calculate the sum of all manhattan distance from this given position in each query.
+you are given some points in a 2D grid. 
+now you have to calculate the sum of all manhattan distances from all the given positions.
+
 
 example: 
 
