@@ -1,0 +1,72 @@
+<p>Adnan is very excited about the problem. which he got from his teacher. But he is unable to solve the problem.</p>
+<p>He gave the problem to chatGPT. But chatGPT doesn't give the correct answer. So he asks for your help.</p>
+<p>In this problem, there is three operations... </p>
+<ul>
+    <li>1  X
+    <li>2  L,  R,  <b>value</b>
+    <li>3  X
+</ul>
+<p>In this opeartion..</p>
+<ul>
+    <li><b>In 1<sup>st</sup> Operation: </b><p>If the index is not explored, then explore this index and set the value of this index as 0.</p>
+        <p>If the index is explored, then just set the value of this index as 0.</p></li>
+    <li><b>In 2<sup>nd</sup> Operation: </b><p>Add the <b>value</b> to all index between the range L to R. <b>which are already explored.</b></p></li>
+    <li><b>In 3<sup>rd</sup> Operation: </b><p>get the value of the index X</p></li>
+</ul>
+
+
+<h3>Input</h3>
+<p>The first line of input will contain <strong>Q (1&lt;= Q &lt;= 10<sup>5</sup>)</strong> number of queries.</p>
+<p>In the next <b>Q</b> line will content those three operation.</p>
+
+<h3>Constant</h3>
+<ul>
+    <li>1  X ; here <strong>(1&lt;= X &lt;= 10<sup>6</sup>)</strong>
+    <li>2  L,  R,  <b>value</b> ; here <strong>(1&lt;= L<=R &lt;= 10<sup>6</sup>)</strong> and <strong>(1&lt;= val &lt;= 10<sup>9</sup>)</strong>
+    <li>3  X ; here <strong>(1&lt;= X &lt;= 10<sup>6</sup>)</strong>
+</ul>
+
+<h3>Output</h3>
+<p>Output only for <strong>q<sub>i</sub> = 3</strong> operations.</p>
+<p>print "<strong>Value</strong>" of the index.
+<h3>Example</h3>
+<p>In this example.</p>
+9<br>
+1 2 <br>
+2 1 3 5<br>
+1 4<br>
+2 3 5 3<br>
+1 1<br>
+2 1 3 2<br>
+3 1<br>
+3 2<br>
+3 3<br>
+<br>
+<b>1st query:</b> 2 is exprolored and set the value as 0. <br>
+<b>2nd query:</b> from range 1 to 3. we have only one index explored. which is 2. so, add 5 to the index 2.<br>
+<b>3rd query:</b> 4 is exprolored and set the value as 0.<br>
+<b>4th query:</b> from range 3 to 5. we have only one index explored. which is 4. so, add 3 to the index 4.<br>
+<b>5th query:</b> 1 is exprolored and set the value as 0.<br>
+<b>6th query:</b> from range 1 to 3. we have two index explored. which is 1,2. so, add 2 to the index 1 and 2.<br>
+<b>7th query:</b> print the value of the index 1. which is 2.<br>
+<b>8th query:</b> print the value of the index 2. which is 7. <br>
+<b>9th query:</b> print the value of the index 3. which is 0 <b>(it's not exprolored yet)</b>.<br>
+
+<pre><strong>Input:</strong>
+    9<br>
+    1 2 <br>
+    2 1 3 5<br>
+    1 4<br>
+    2 3 5 3<br>
+    1 1<br>
+    2 1 3 2<br>
+    3 1<br>
+    3 2<br>
+    3 3<br>
+    <br>
+
+<strong>Output:</strong>
+    2<br>
+    7<br>
+    0
+</pre>
